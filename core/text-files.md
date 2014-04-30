@@ -54,6 +54,7 @@ What do you think the following code does, if you run it in the same directory a
 
     f = open("months.txt")
     print(f.read())
+    f.close()
 
 Try it out in an IPython Notebook cell.
 
@@ -66,6 +67,20 @@ It prints out the contents of the text file.
 * The `open` function creates a *file object* (a way of getting at the contents of the file), which is then stored in the variable `f`.
 
 * `f.read()` tells the file object to read the full contents of the file, and return it as a string.
+
+*  `f.close()` tells to close the file object in order to free system resources.
+
+## Writing alternate code to never bother with closing file 
+
+Most people forget to write the last `f.close()`
+
+A cleaner way to write the same code would be:
+
+    with open("months.txt") as f:
+        print(f.read())
+    
+Enclosing the print inside a `with open("your_file") as f:` make sure that you don't forget a `f.close()` statement
+
 
 ## Reading by smaller pieces
 
